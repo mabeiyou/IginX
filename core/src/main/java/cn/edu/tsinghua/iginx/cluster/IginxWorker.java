@@ -239,7 +239,7 @@ public class IginxWorker implements IService.Iface {
                     return RpcUtils.FAILURE;
                 }
             } catch (Exception e) {
-                logger.error("load storage engine error, unable to connection to " + meta.getIp() + ":" + meta.getPort());
+                logger.error("load storage engine error, unable to connection to " + meta.getIp() + ":" + meta.getPort() + ", encounter error: ", e);
                 return RpcUtils.FAILURE;
             }
             storageEngineMetas.add(meta);

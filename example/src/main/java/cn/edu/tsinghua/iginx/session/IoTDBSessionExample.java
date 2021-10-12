@@ -49,7 +49,9 @@ public class IoTDBSessionExample {
         // 打开 Session
         session.openSession();
 
-        // 列式插入对齐数据
+        lastQuery();
+
+/*        // 列式插入对齐数据
         insertColumnRecords();
         // 列式插入非对齐数据
         insertNonAlignedColumnRecords();
@@ -72,7 +74,7 @@ public class IoTDBSessionExample {
         // 再次查询数据
         queryData();
         // 查看集群信息
-        showClusterInfo();
+        showClusterInfo();*/
 
         // 关闭 Session
         session.closeSession();
@@ -301,12 +303,10 @@ public class IoTDBSessionExample {
 
     private static void lastQuery() throws SessionException, ExecutionException {
         List<String> paths = new ArrayList<>();
-        paths.add(S1);
-        paths.add(S2);
-        paths.add(S3);
-        paths.add(S4);
+        paths.add("a.*");
 
         LastQueryDataSet dataSet = session.queryLast(paths, 0L);
+        System.out.println("LAST ");
         dataSet.print();
     }
 

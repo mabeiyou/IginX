@@ -23,6 +23,7 @@ import cn.edu.tsinghua.iginx.cluster.IginxWorker;
 import cn.edu.tsinghua.iginx.conf.Config;
 import cn.edu.tsinghua.iginx.thrift.DataType;
 import cn.edu.tsinghua.iginx.thrift.InsertNonAlignedRowRecordsReq;
+import cn.edu.tsinghua.iginx.thrift.OpenSessionReq;
 import cn.edu.tsinghua.iginx.thrift.Status;
 import cn.edu.tsinghua.iginx.utils.Bitmap;
 import cn.edu.tsinghua.iginx.utils.ByteUtils;
@@ -48,9 +49,9 @@ public class PublishHandler extends AbstractInterceptHandler {
 
     private final IginxWorker worker = IginxWorker.getInstance();
 
-    private final IPayloadFormatter payloadFormat;
-
     private final long sessionId;
+
+    private final IPayloadFormatter payloadFormat;
 
     public PublishHandler(Config config) {
         payloadFormat = PayloadFormatManager.getInstance().getFormatter(config.getMqttPayloadFormatter());

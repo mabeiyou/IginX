@@ -8,6 +8,7 @@ import cn.edu.tsinghua.iginx.utils.SortUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class ClearDataOperator extends Operator {
