@@ -72,7 +72,7 @@ public class PublishHandler extends AbstractInterceptHandler {
         String username = msg.getUsername();
         MqttQoS qos = msg.getQos();
 
-        logger.debug("Receive publish message. clientId: {}, username: {}, qos = {}, topic: {}, payload: {}",
+        logger.info("Receive publish message. clientId: {}, username: {}, qos = {}, topic: {}, payload: {}",
                 clientId, username, qos, topic, payload);
 
         List<Message> events = payloadFormat.format(payload);
@@ -145,6 +145,7 @@ public class PublishHandler extends AbstractInterceptHandler {
         req.setBitmapList(bitmapList);
 
         Status status = worker.insertNonAlignedRowRecords(req);
-        logger.debug("event process result: {}", status);
+        logger.info("event process result: {}", status);
+        msg.getPayload().release();
     }
 }
